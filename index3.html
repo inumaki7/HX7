@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> My business page </title>
+  <title>My business page</title>
   <meta name="description" content="معرض أعمالي ومشاريعي في تطوير المواقع والتطبيقات والألعاب." />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -17,7 +17,8 @@
       --glass: rgba(255,255,255,0.04);
       --glass-2: rgba(255,255,255,0.02);
     }
-    *{box-sizing:border-box}
+
+    *{box-sizing:border-box;scroll-behavior:smooth}
     body{
       margin:0;
       font-family:'Tajawal',sans-serif;
@@ -27,23 +28,56 @@
     }
     .container{max-width:1100px;margin:0 auto}
 
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:10px;margin-bottom:28px;
+    }
+
     .brand{display:flex;align-items:center;gap:12px}
     .logo{
       width:56px;height:56px;border-radius:12px;
       background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
       display:flex;align-items:center;justify-content:center;
       font-weight:900;color:white;font-size:18px;
+      flex-shrink:0;
     }
-    .brand h1{margin:0;font-size:18px}
+    .brand h1{margin:0;font-size:20px}
     a{text-decoration:none;color:inherit}
 
-    .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn{
+      padding:10px 16px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      transition:background .25s,color .25s,border .25s;
+    }
+    .btn-outline{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.1);
+      color:var(--muted);
+    }
+    .btn-outline:hover{
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#fff;
+      border:1px solid transparent;
+    }
+
     .muted{color:var(--muted);font-size:14px}
 
-    h2{text-align:center;margin-top:10px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+    h2{
+      text-align:center;
+      margin-top:10px;
+      font-size:26px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      margin-top:30px;
+    }
+
     .card{
       background:linear-gradient(180deg,var(--glass),var(--glass-2));
       padding:22px;border-radius:14px;
@@ -51,17 +85,35 @@
       backdrop-filter:blur(6px);
       transition:transform .25s,box-shadow .25s;
     }
-    .card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(2,6,23,0.6)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
     .project-img{
       width:100%;border-radius:10px;margin-bottom:12px;
       height:180px;object-fit:cover;background:#222;
     }
-    .service-icon{font-size:36px;margin-bottom:10px}
-    footer{text-align:center;color:var(--muted);margin-top:40px;font-size:13px}
-    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}}
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:40px;
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    /* تحسينات للجوال */
+    @media(max-width:700px){
+      body{padding:16px}
+      .logo{width:48px;height:48px;font-size:16px}
+      .brand h1{font-size:18px}
+      .btn{padding:8px 14px;font-size:14px}
+      h2{font-size:22px}
+      .muted{font-size:13px}
+      .project-img{height:150px}
+      header{flex-direction:column;align-items:flex-start;gap:14px}
+      footer{font-size:12px}
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
