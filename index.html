@@ -6,7 +6,6 @@
   <title> Home </title>
   <meta name="description" content="موقع شخصي لعرض خدمات: دعم فني، برمجة مواقع وتطبيقات، صيانة، وتطوير ألعاب." />
 
-  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="icon" href="ايقونة.png" type="image/png">
 
@@ -20,10 +19,8 @@
       --glass: rgba(255,255,255,0.04);
       --glass-2: rgba(255,255,255,0.02);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
-      margin:0;
       font-family:'Tajawal',sans-serif;
       background:linear-gradient(180deg,var(--bg),#071024 120%);
       color:#e6eef6;
@@ -33,56 +30,114 @@
 
     .container{max-width:1100px;margin:0 auto}
 
+    /* ===== Header ===== */
     header{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;margin-bottom:28px;flex-wrap:wrap;
     }
-    .brand{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
-      display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:18px;box-shadow:0 6px 20px rgba(7,10,23,0.6)
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;color:white;font-size:18px;
+      box-shadow:0 6px 20px rgba(7,10,23,0.6)
     }
-    .brand h1{margin:0;font-size:18px}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    .brand h1{margin:0;font-size:20px}
+    .muted{color:var(--muted);font-size:14px}
+    nav a{
+      color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500;
+      transition:.2s;
+    }
     nav a:hover{color:white}
 
-    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin-bottom:36px}
+    /* ===== Hero ===== */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:center;
+      margin-bottom:36px;
+    }
     .hero .card{
-      background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:28px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      background:linear-gradient(180deg,var(--glass),var(--glass-2));
+      padding:28px;border-radius:14px;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
       backdrop-filter: blur(6px);
     }
-    .title{font-size:28px;margin:0 0 10px}
-    .subtitle{color:var(--muted);margin:0 0 18px}
-    .cta-row{display:flex;gap:12px}
-    .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block;text-align:center}
-    .btn-primary{
-      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:white;box-shadow:0 8px 24px rgba(124,58,237,0.16)
+    .title{font-size:26px;margin-bottom:10px;line-height:1.4}
+    .subtitle{color:var(--muted);margin-bottom:18px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:10px 16px;border-radius:10px;border:0;cursor:pointer;
+      font-weight:700;text-decoration:none;display:inline-block;text-align:center;
     }
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:white;box-shadow:0 8px 24px rgba(124,58,237,0.16);
+    }
 
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    .service-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .25s,box-shadow .25s}
-    .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
-    .service-icon{width:54px;height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:white;background:linear-gradient(135deg,var(--accent-end),var(--accent-start));margin-left:auto}
-    .service-title{font-weight:800;margin:8px 0}
+    /* ===== Services ===== */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;margin-top:18px;
+    }
+    .service-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .25s,box-shadow .25s;
+    }
+    .service-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 50px rgba(2,6,23,0.6);
+    }
+    .service-icon{
+      width:50px;height:50px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;color:white;
+      background:linear-gradient(135deg,var(--accent-end),var(--accent-start));
+      margin-left:auto;
+    }
+    .service-title{font-weight:800;margin:8px 0 4px}
     .service-desc{color:var(--muted);font-size:14px}
 
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .work{border-radius:10px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
-    .work h4{margin:0 0 6px}
+    /* ===== Works ===== */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:12px;
+    }
+    .work{
+      border-radius:10px;padding:14px;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .work h4{margin-bottom:6px}
     .work p{margin:0;color:var(--muted);font-size:14px}
 
-    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+    footer{
+      margin-top:40px;color:var(--muted);font-size:13px;text-align:center;
+    }
 
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .grid{grid-template-columns:1fr}
+    .badge{
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#fff;font-size:13px;margin-bottom:10px;
     }
+
+    /* ===== Mobile tweaks ===== */
     @media (max-width:560px){
-      nav{display:none}
-      .services{grid-template-columns:1fr}
+      body{padding:16px;}
+      .logo{width:46px;height:46px;font-size:16px;}
+      .brand h1{font-size:18px}
+      .title{font-size:22px}
+      .subtitle{font-size:14px}
+      .btn{width:100%;text-align:center}
+      header{flex-direction:column;align-items:flex-start}
+      nav{width:100%;display:flex;justify-content:space-around;margin-top:10px}
+      nav a{margin:0;font-size:15px}
     }
-    .badge{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:700;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#fff;font-size:13px}
   </style>
 </head>
 
@@ -111,33 +166,69 @@
         <div class="cta-row">
           <button class="btn btn-primary" onclick="scrollToSection('portfolio')">اطلع على أعمالي</button>
         </div>
-        <div style="margin-top:18px;">
+
+        <div style="margin-top:20px;">
           <h3 style="margin:0 0 8px">خدمات رئيسية</h3>
           <div class="services">
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">🛠️</div>
-              <div style="margin-right:12px"><div class="service-title">خبير دعم فني</div><div class="service-desc">دعم لحظي، إعداد شبكات، مراقبة، واستجابة للحوادث.</div></div>
-            </div></div>
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">💻</div>
-              <div style="margin-right:12px"><div class="service-title">مبرمج مواقع</div><div class="service-desc">واجهات سريعة، متوافقة مع الجوال، وSEO أساسي.</div></div>
-            </div></div>
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">🔧</div>
-              <div style="margin-right:12px"><div class="service-title">خبير صيانة</div><div class="service-desc">صيانة أجهزة وبرمجيات، فحص دوري، واسترجاع بيانات.</div></div>
-            </div></div>
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">📱</div>
-              <div style="margin-right:12px"><div class="service-title">مبرمج تطبيقات</div><div class="service-desc">تطبيقات أندرويد وiOS قابلة للتطوير وربط مع API.</div></div>
-            </div></div>
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">🎮</div>
-              <div style="margin-right:12px"><div class="service-title">مبرمج ألعاب</div><div class="service-desc">ألعاب ثنائية وثلاثية الأبعاد، محرك Unity، تحسين الأداء.</div></div>
-            </div></div>
-            <div class="service-card"><div style="display:flex;align-items:center">
-              <div class="service-icon">⚡</div>
-              <div style="margin-right:12px"><div class="service-title">تحسين أداء</div><div class="service-desc">تسريع مواقع وتطبيقات، وتحسين استهلاك الموارد.</div></div>
-            </div></div>
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">🛠️</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">خبير دعم فني</div>
+                  <div class="service-desc">دعم لحظي، إعداد شبكات، مراقبة، واستجابة للحوادث.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">💻</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">مبرمج مواقع</div>
+                  <div class="service-desc">واجهات سريعة، متوافقة مع الجوال، وSEO أساسي.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">🔧</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">خبير صيانة</div>
+                  <div class="service-desc">صيانة أجهزة وبرمجيات، فحص دوري، واسترجاع بيانات.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">📱</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">مبرمج تطبيقات</div>
+                  <div class="service-desc">تطبيقات أندرويد وiOS قابلة للتطوير وربط مع API.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">🎮</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">مبرمج ألعاب</div>
+                  <div class="service-desc">ألعاب ثنائية وثلاثية الأبعاد، محرك Unity، تحسين الأداء.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div style="display:flex;align-items:center">
+                <div class="service-icon">⚡</div>
+                <div style="margin-right:12px">
+                  <div class="service-title">تحسين أداء</div>
+                  <div class="service-desc">تسريع مواقع وتطبيقات، وتحسين استهلاك الموارد.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -161,4 +252,3 @@
   </script>
 </body>
 </html>
-
