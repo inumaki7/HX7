@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Home Page </title>
+  <meta name="description" content="موقع شخصي لعرض خدمات: دعم فني، برمجة مواقع وتطبيقات، صيانة، وتطوير ألعاب." />
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="ايقونة.png" type="image/png">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6b2;
+      --accent-start:#7c3aed;
+      --accent-end:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Tajawal',sans-serif;
+      background:linear-gradient(180deg,var(--bg),#071024 120%);
+      color:#e6eef6;
+      line-height:1.5;
+      padding:24px;
+    }
+
+    .container{max-width:1100px;margin:0 auto}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:18px;box-shadow:0 6px 20px rgba(7,10,23,0.6)
+    }
+    .brand h1{margin:0;font-size:18px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:white}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin-bottom:36px}
+    .hero .card{
+      background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:28px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .title{font-size:28px;margin:0 0 10px}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .cta-row{display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block;text-align:center}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:white;box-shadow:0 8px 24px rgba(124,58,237,0.16)
+    }
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .service-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .25s,box-shadow .25s}
+    .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
+    .service-icon{width:54px;height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:white;background:linear-gradient(135deg,var(--accent-end),var(--accent-start));margin-left:auto}
+    .service-title{font-weight:800;margin:8px 0}
+    .service-desc{color:var(--muted);font-size:14px}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .work{border-radius:10px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
+    .work h4{margin:0 0 6px}
+    .work p{margin:0;color:var(--muted);font-size:14px}
+
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      nav{display:none}
+      .services{grid-template-columns:1fr}
+    }
+    .badge{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:700;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#fff;font-size:13px}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">𝑯𝕏⁷</div>
+        <div>
+          <h1>𝑯𝕏⁷</h1>
+          <div class="muted">خبير دعم فني • مبرمج مواقع وتطبيقات • مطور ألعاب</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index2.html">الخدمات</a>
+        <a href="index3.html">أعمالي</a>
+        <a href="index4.html">التواصل</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <div class="badge">جاهز للعمل</div>
+        <h2 class="title">أقدم حلول تقنية متكاملة — من الدعم والصيانة إلى تطوير المواقع والتطبيقات والألعاب</h2>
+        <p class="subtitle">خبرة في حل المشكلات بسرعة، تطوير واجهات مستخدم عصرية، وتطبيقات موبايل قابلة للتوسع.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" onclick="scrollToSection('portfolio')">اطلع على أعمالي</button>
+        </div>
+        <div style="margin-top:18px;">
+          <h3 style="margin:0 0 8px">خدمات رئيسية</h3>
+          <div class="services">
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">🛠️</div>
+              <div style="margin-right:12px"><div class="service-title">خبير دعم فني</div><div class="service-desc">دعم لحظي، إعداد شبكات، مراقبة، واستجابة للحوادث.</div></div>
+            </div></div>
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">💻</div>
+              <div style="margin-right:12px"><div class="service-title">مبرمج مواقع</div><div class="service-desc">واجهات سريعة، متوافقة مع الجوال، وSEO أساسي.</div></div>
+            </div></div>
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">🔧</div>
+              <div style="margin-right:12px"><div class="service-title">خبير صيانة</div><div class="service-desc">صيانة أجهزة وبرمجيات، فحص دوري، واسترجاع بيانات.</div></div>
+            </div></div>
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">📱</div>
+              <div style="margin-right:12px"><div class="service-title">مبرمج تطبيقات</div><div class="service-desc">تطبيقات أندرويد وiOS قابلة للتطوير وربط مع API.</div></div>
+            </div></div>
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">🎮</div>
+              <div style="margin-right:12px"><div class="service-title">مبرمج ألعاب</div><div class="service-desc">ألعاب ثنائية وثلاثية الأبعاد، محرك Unity، تحسين الأداء.</div></div>
+            </div></div>
+            <div class="service-card"><div style="display:flex;align-items:center">
+              <div class="service-icon">⚡</div>
+              <div style="margin-right:12px"><div class="service-title">تحسين أداء</div><div class="service-desc">تسريع مواقع وتطبيقات، وتحسين استهلاك الموارد.</div></div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h3>نماذج أعمال</h3>
+      <div class="grid" style="margin-top:12px">
+        <div class="work"><h4>موقع معرض أعمال (قالب)</h4><p>تصميم واجهة + لوحة تحكم بسيطة، نظام اتصالات عبر API.</p></div>
+        <div class="work"><h4>تطبيق موبايل لخدمة عملاء</h4><p>Android & iOS، إشعارات، تكامل مع CRM.</p></div>
+        <div class="work"><h4>لعبة ثنائية الأبعاد</h4><p>Unity، نظام تقدم، وتحسين للأداء على الأجهزة الضعيفة.</p></div>
+        <div class="work"><h4>مشروع صيانة شبكات</h4><p>تركيب ومتابعة أجهزة، خطة صيانة دورية ومستندات توثيق.</p></div>
+      </div>
+    </section>
+
+    <footer>© 2025 𝑯𝕏⁷ — جميع الحقوق محفوظة</footer>
+  </div>
+
+  <script>
+    function scrollToSection(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+  </script>
+</body>
+</html>
