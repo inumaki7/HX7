@@ -2,252 +2,228 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>خدماتي | HX⁷</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Services page - 𝑯𝕏⁷ </title>
   <meta name="description" content="تعرف على جميع الخدمات التي أقدمها في الدعم الفني، البرمجة، الصيانة، والتطوير." />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="icon" href="ايقونة.png" type="image/png">
 
   <style>
-    :root {
-      --bg: #0f1724;
-      --muted: #9aa6b2;
-      --accent-start: #7c3aed;
-      --accent-end: #06b6d4;
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6b2;
+      --accent-start:#7c3aed;
+      --accent-end:#06b6d4;
       --glass: rgba(255,255,255,0.04);
       --glass-2: rgba(255,255,255,0.02);
     }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;font-family:'Tajawal',sans-serif;overflow-x:hidden;background:linear-gradient(180deg,var(--bg),#071024 120%);color:#e6eef6;}
+    
+    /* تموجات بنفسجية */
+    body::before, body::after {
+      content:"";
+      position:absolute;
+      top:0; left:0;
+      width:200%; height:200%;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(124,58,237,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(124,58,237,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(167,85,255,0.1) 0%, transparent 50%);
+      animation: wave 60s infinite linear;
+      z-index:0;
+      opacity:0.6;
+      transform:translateZ(0);
+    }
+    body::after { animation: wave2 90s infinite linear; opacity:0.4; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @keyframes wave {
+      0%{transform:translate(0,0) rotate(0deg);}
+      50%{transform:translate(-5%, -2%) rotate(180deg);}
+      100%{transform:translate(0,0) rotate(360deg);}
+    }
+    @keyframes wave2 {
+      0%{transform:translate(0,0) rotate(0deg);}
+      50%{transform:translate(5%, 3%) rotate(-180deg);}
+          100%{transform:translate(0,0) rotate(-360deg);}
+        }
+    /* أشكال صغيرة متحركة */
+    .floating-shapes span {
+      position: absolute;
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      opacity: 0.35;
+      border-radius: 4px;
+      animation: floatShape 20s infinite ease-in-out;
+      z-index: 0;
+    }
+    .floating-shapes span:nth-child(odd){border-radius:50%;}
+    .floating-shapes span:nth-child(1){top:10%;left:5%;animation-duration:18s;}
+    .floating-shapes span:nth-child(2){top:80%;left:10%;animation-duration:25s;width:16px;height:16px;}
+    .floating-shapes span:nth-child(3){top:60%;left:85%;animation-duration:22s;}
+    .floating-shapes span:nth-child(4){top:40%;left:70%;animation-duration:28s;}
+    .floating-shapes span:nth-child(5){top:20%;left:90%;animation-duration:30s;width:10px;height:10px;}
+    .floating-shapes span:nth-child(6){top:75%;left:50%;animation-duration:26s;}
 
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background: linear-gradient(180deg, var(--bg), #071024 120%);
-      color: #e6eef6;
-      padding: 24px;
-      line-height: 1.6;
+    @keyframes floatShape {
+      0%{transform:translateY(0) rotate(0deg);opacity:.4;}
+      50%{transform:translateY(-40px) rotate(180deg);opacity:.7;}
+      100%{transform:translateY(0) rotate(360deg);opacity:.4;}
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
+    .container{max-width:1100px;margin:0 auto;position:relative;z-index:1;padding:24px;}
+
+    /* تأثير دخول العناصر */
+    [data-animate]{opacity:0; transform:translateY(30px); animation:fadeUpFull 0.8s forwards ease-out;}
+    @keyframes fadeUpFull { to { opacity:1; transform:translateY(0); } }
+
+    [data-animate="header"]{animation-delay:0.2s;}
+    [data-animate="services"]{animation-delay:0.4s;}
+    [data-animate="footer"]{animation-delay:0.6s;}
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;color:white;font-size:18px;
     }
-
-    /* ===== Header ===== */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      gap: 10px;
+    .brand h1{margin:0;font-size:18px}
+    a{text-decoration:none;color:inherit}
+    .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:white;
+      box-shadow:0 8px 24px rgba(124,58,237,0.16)
     }
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .muted{color:var(--muted);font-size:14px;text-align:right}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+    h2{text-align:center;margin-top:10px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
+    .card{
+      background:linear-gradient(180deg,var(--glass),var(--glass-2));
+      padding:22px;border-radius:14px;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      backdrop-filter:blur(6px);
+      transition:transform .25s,box-shadow .25s;
     }
-
-    .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      color: white;
-      font-size: 18px;
-      box-shadow: 0 6px 20px rgba(7,10,23,0.6);
-    }
-
-    .brand h1 { margin: 0; font-size: 20px; }
-    .muted { color: var(--muted); font-size: 14px; }
-
-    .btn {
-      padding: 10px 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--muted);
-      background: transparent;
-      cursor: pointer;
-      font-weight: 700;
-      transition: .25s;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-      color: #fff;
-      border-color: transparent;
-    }
-
-    /* ===== Main Section ===== */
-    h2 {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 24px;
-    }
-
-    p.desc {
-      text-align: center;
-      max-width: 700px;
-      margin: 10px auto 30px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* ===== Grid Layout ===== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, var(--glass), var(--glass-2));
-      padding: 22px;
-      border-radius: 14px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(2,6,23,0.6);
-    }
-
-    .service-icon {
-      font-size: 34px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent-end), var(--accent-start));
-      width: 54px;
-      height: 54px;
-      border-radius: 10px;
-    }
-
-    h3 {
-      margin: 10px 0 6px;
-      font-size: 18px;
-    }
-
-    ul {
-      margin: 0;
-      padding-right: 18px;
-    }
-
-    li {
-      margin-bottom: 6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      margin-top: 40px;
-      font-size: 13px;
-    }
-
-    /* ===== Mobile Responsive ===== */
-    @media (max-width: 600px) {
-      body { padding: 16px; }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .logo {
-        width: 46px;
-        height: 46px;
-        font-size: 16px;
-      }
-
-      .brand h1 { font-size: 18px; }
-      h2 { font-size: 20px; }
-      p.desc { font-size: 14px; }
-      .btn { width: 100%; text-align: center; }
-    }
+    .card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(2,6,23,0.6)}
+    .service-icon{font-size:36px;margin-bottom:10px}
+    ul{margin:0;padding-right:20px}
+    li{margin-bottom:6px}
+    footer{text-align:center;color:var(--muted);margin-top:40px;font-size:13px}
+    @media(max-width:860px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">𝑯𝕏⁷</div>
-        <div>
-          <h1>𝑯𝕏⁷</h1>
-          <div class="muted">خبير دعم فني • مبرمج مواقع وتطبيقات • مطور ألعاب</div>
-        </div>
-      </div>
-      <a href="index.html" class="btn">⬅ العودة للرئيسية</a>
-    </header>
+<div class="floating-shapes"><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
-    <h2>خدماتي الاحترافية</h2>
-    <p class="desc">
-      أقدم مجموعة واسعة من الخدمات التقنية بأسعار مناسبة وجودة عالية — من الصيانة والدعم الفني حتى تصميم وبرمجة التطبيقات والألعاب.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <div class="service-icon">🛠️</div>
-        <h3>الدعم الفني المتقدم</h3>
-        <p class="muted">حلول فورية للأعطال، مراقبة الأنظمة، إعداد شبكات، وتحديثات أمنية مستمرة.</p>
-        <ul>
-          <li>مراقبة الخوادم والشبكات 24/7</li>
-          <li>إعداد الأنظمة والنسخ الاحتياطية</li>
-          <li>حل مشاكل الاتصال والبرمجيات</li>
-        </ul>
-        <p><strong>السعر التقريبي:</strong> يبدأ من 30 دولار شهريًا</p>
-      </div>
-
-      <div class="card">
-        <div class="service-icon">💻</div>
-        <h3>برمجة وتصميم مواقع</h3>
-        <p class="muted">تصميم مواقع عصرية ومتجاوبة لجميع الأجهزة مع تحسين SEO وتجربة المستخدم.</p>
-        <ul>
-          <li>مواقع تعريفية وتجارية</li>
-          <li>لوحات تحكم Dashboard</li>
-          <li>ربط مع قواعد بيانات وواجهات API</li>
-        </ul>
-        <p><strong>السعر التقريبي:</strong> من 100 إلى 500 دولار</p>
-      </div>
-
-      <div class="card">
-        <div class="service-icon">📱</div>
-        <h3>تطوير تطبيقات الموبايل</h3>
-        <p class="muted">تطبيقات حديثة لنظامي Android وiOS باستخدام Flutter أو React Native.</p>
-        <ul>
-          <li>واجهات جذابة وسريعة</li>
-          <li>ربط مع واجهات API</li>
-          <li>نشر التطبيق على المتاجر الرسمية</li>
-        </ul>
-        <p><strong>السعر التقريبي:</strong> من 150 إلى 800 دولار</p>
-      </div>
-
-      <div class="card">
-        <div class="service-icon">🎮</div>
-        <h3>برمجة وتطوير الألعاب</h3>
-        <p class="muted">أطور ألعابًا ثنائية وثلاثية الأبعاد عبر Unity وGodot مع نظام مستويات وذكاء اصطناعي.</p>
-        <ul>
-          <li>تصميم الشخصيات والمستويات</li>
-          <li>تحسين الأداء والذكاء الاصطناعي</li>
-          <li>دعم أنظمة الجوائز والتقدم</li>
-        </ul>
-        <p><strong>السعر التقريبي:</strong> من 150 إلى 700 دولار</p>
+<div class="container">
+  <header data-animate="header">
+    <div class="brand">
+      <div class="logo">𝑯𝕏⁷</div>
+      <div>
+        <h1>𝑯𝕏⁷</h1>
+        <div class="muted">خبير دعم فني • مبرمج مواقع وتطبيقات • مطور ألعاب</div>
       </div>
     </div>
+    <a href="index.html" class="btn btn-outline">⬅ العودة للرئيسية</a>
+  </header>
 
-    <footer>© 2025 𝑯𝕏⁷ — جميع الحقوق محفوظة</footer>
+  <h2 data-animate="services">خدماتي الاحترافية</h2>
+  <p class="muted" style="text-align:center;max-width:700px;margin:0 auto" data-animate="services">
+    أقدم مجموعة واسعة من الخدمات التقنية بأسعار مناسبة وجودة عالية — من الصيانة والدعم الفني حتى تصميم وبرمجة التطبيقات والألعاب.
+  </p>
+
+  <div class="grid">
+    <div class="card" data-animate="services">
+      <div class="service-icon">🛠️</div>
+      <h3>الدعم الفني المتقدم</h3>
+      <p class="muted">حلول فورية للأعطال، مراقبة الأنظمة، إعداد شبكات، وتحديثات أمنية مستمرة.</p>
+      <ul class="muted">
+        <li>مراقبة الخوادم والشبكات 24/7</li>
+        <li>إعداد الأنظمة والنسخ الاحتياطية</li>
+        <li>حل مشاكل الاتصال والبرمجيات</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> يبدأ من 30 دولار شهريًا</p>
+    </div>
+
+    <div class="card" data-animate="services">
+      <div class="service-icon">💻</div>
+      <h3>برمجة وتصميم مواقع</h3>
+      <p class="muted">تصميم مواقع عصرية ومتجاوبة لجميع الأجهزة مع تحسين SEO وتجربة المستخدم.</p>
+      <ul class="muted">
+        <li>مواقع تعريفية وتجارية</li>
+        <li>لوحات تحكم Dashboard</li>
+        <li>ربط مع قواعد بيانات وواجهات API</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> من 100 إلى 500 دولار</p>
+    </div>
+
+    <div class="card" data-animate="services">
+      <div class="service-icon">🔧</div>
+      <h3>خدمات الصيانة والدعم</h3>
+      <p class="muted">فحص شامل للأجهزة، تحديثات النظام، واسترجاع البيانات المفقودة بأمان.</p>
+      <ul class="muted">
+        <li>تنظيف النظام وإزالة الفيروسات</li>
+        <li>استعادة الملفات المحذوفة</li>
+        <li>تركيب البرامج وتهيئة الشبكات</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> 20 - 100 دولار</p>
+    </div>
+
+    <div class="card" data-animate="services">
+      <div class="service-icon">📱</div>
+      <h3>تطوير تطبيقات الموبايل</h3>
+      <p class="muted">تطبيقات حديثة لنظامي Android وiOS باستخدام Flutter أو React Native.</p>
+      <ul class="muted">
+        <li>واجهات جذابة وسريعة</li>
+        <li>ربط مع واجهات API</li>
+        <li>نشر التطبيق على المتاجر الرسمية</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> من 150 إلى 800 دولار</p>
+    </div>
+
+    <div class="card" data-animate="services">
+      <div class="service-icon">🎮</div>
+      <h3>برمجة وتطوير الألعاب</h3>
+      <p class="muted">أطور ألعابًا ثنائية وثلاثية الأبعاد عبر Unity وGodot مع نظام مستويات وذكاء اصطناعي.</p>
+      <ul class="muted">
+        <li>تصميم الشخصيات والمستويات</li>
+        <li>تحسين الأداء والذكاء الاصطناعي</li>
+        <li>دعم أنظمة الجوائز والتقدم</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> من 150 إلى 700 دولار</p>
+    </div>
+
+    <div class="card" data-animate="services">
+      <div class="service-icon">⚙️</div>
+      <h3>خدمات مخصصة للشركات</h3>
+      <p class="muted">حلول تقنية متكاملة لتشغيل وتوسيع أعمالك الرقمية بأمان وكفاءة.</p>
+      <ul class="muted">
+        <li>تحليل احتياجات العمل</li>
+        <li>تطوير أنظمة إدارة موارد بشرية أو مبيعات</li>
+        <li>دعم فني مخصص واتفاقيات SLA</li>
+      </ul>
+      <p><strong>السعر التقريبي:</strong> يبدأ من 100 دولار</p>
+    </div>
   </div>
+
+  <footer data-animate="footer">
+    © 2025 𝑯𝕏⁷ — جميع الحقوق محفوظة  
+  </footer>
+</div>
+
+<script>
+  // لجعل العناصر تظهر بتأثير الدخول عند التمرير
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    el.style.opacity = '0';
+    setTimeout(()=>{el.style.animationPlayState='running';},100);
+  });
+</script>
 </body>
 </html>
