@@ -4,165 +4,139 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact</title>
-
-  <!-- Tajawal font -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome (CSS CDN - أكثر ثبات على الموبايل من كِت جافاسكريبت) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
   <style>
-    /* عام - صندوق الحدود لتجنب مشاكل القياسات على الموبايل */
     *, *::before, *::after { box-sizing: border-box; }
-
     :root{
       --bg:#0f172a;
-      --card:#1e293b;
-      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.05);
+      --glass-2: rgba(255,255,255,0.015);
       --accent-start:#7c3aed;
       --accent-end:#06b6d4;
       --whatsapp:#25D366;
       --telegram:#0088cc;
       --paypal:#0070ba;
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.02);
       --transition-speed:0.25s;
     }
-
-    html,body{
-      height:100%;
+    html, body{
       margin:0;
       font-family:'Tajawal',sans-serif;
+      min-height:100dvh;
       background: linear-gradient(120deg, #0f172a, #020617);
       color:#e2e8f0;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      /* استخدم 100dvh لتجنب مشكلة شريط المتصفح على iOS */
-      min-height:100dvh;
-      position:relative;
       overflow-x:hidden;
-      /* آمن لمسات الشاشة */
-      -webkit-tap-highlight-color: transparent;
+      position:relative;
     }
 
-    /* خلفية متحركة أخف - تعطّل على شاشات صغيرة لتحسين الأداء */
-    body::before{
-      content:'';
-      position:absolute;
-      top:-40%;
-      left:-40%;
-      width:180%;
-      height:180%;
-      background:radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%);
-      animation: rotate 120s linear infinite;
+    /* خلفية متدرجة ديناميكية */
+    body::before, body::after{
+      content:"";
+      position:absolute; top:-20%; left:-20%;
+      width:140%; height:140%;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+      animation:rotate 120s linear infinite;
       z-index:0;
-      will-change: transform;
       pointer-events:none;
+    }
+    body::after{
+      animation:rotate 160s linear reverse infinite;
+      opacity:0.5;
     }
     @keyframes rotate{ 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
 
-    .container{
-      position:relative;
-      z-index:1;
-      width: min(95%, 600px);
-      margin: 24px auto;
-      padding: calc(15px + env(safe-area-inset-top)) 15px calc(15px + env(safe-area-inset-bottom));
+    /* أشكال طافية متعددة الأحجام */
+    .floating span{
+      position:absolute; display:block; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      opacity:0.3; z-index:0;
+      animation:floatShape 20s infinite ease-in-out;
     }
+    .floating span:nth-child(1){top:5%; left:10%; width:14px; height:14px; animation-duration:18s;}
+    .floating span:nth-child(2){top:80%; left:15%; width:16px; height:16px; animation-duration:22s;}
+    .floating span:nth-child(3){top:50%; left:85%; width:12px; height:12px; animation-duration:26s;}
+    .floating span:nth-child(4){top:35%; left:70%; width:10px; height:10px; animation-duration:28s;}
+    .floating span:nth-child(5){top:20%; left:90%; width:18px; height:18px; animation-duration:32s;}
+    .floating span:nth-child(6){top:60%; left:40%; width:8px; height:8px; animation-duration:24s;}
+    @keyframes floatShape{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-40px) rotate(180deg);}100%{transform:translateY(0) rotate(360deg);} }
+
+    .container{position:relative; z-index:1; width:min(95%,600px); margin:24px auto; padding:20px;}
 
     .card{
       background:linear-gradient(180deg,var(--glass),var(--glass-2));
-      padding:28px;
-      border-radius:20px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.45);
-      backdrop-filter:blur(8px);
-      text-align:center;
+      border-radius:25px; padding:32px; text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,0.55);
+      backdrop-filter:blur(10px);
       border:1px solid rgba(255,255,255,0.06);
-      transition:transform 0.28s, box-shadow 0.28s;
+      transition:transform 0.3s, box-shadow 0.3s;
+      opacity:0; transform:translateY(40px);
+      animation:fadeUp 0.8s forwards;
     }
-    .card:focus-within, .card:hover{ transform: translateY(-4px); }
+    .card:focus-within, .card:hover{ transform: translateY(-6px); box-shadow:0 28px 70px rgba(0,0,0,0.65); }
+
+    @keyframes fadeUp{ to{opacity:1; transform:translateY(0);} }
 
     h2{
-      font-size:28px;
-      font-weight:900;
+      font-size:30px; font-weight:900; margin:25px 0 20px;
       background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin:20px 0 18px;
-      line-height:1.05;
-      word-break:break-word;
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
 
     a{ text-decoration:none; color:inherit; }
 
-    /* أزرار - نستخدم gap بدلاً من margin على الأيقونات، ونجعلها full-width على الصغير */
     .btn{
-      padding:12px 18px;
-      border-radius:14px;
-      border:none;
-      cursor:pointer;
-      font-weight:700;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-      margin:10px auto;
-      width:100%;
-      max-width:340px;
-      font-size:15px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      text-align:center;
+      padding:14px 20px; border-radius:16px; border:none;
+      display:flex; justify-content:center; align-items:center; gap:12px;
+      margin:14px auto; width:100%; max-width:340px; font-weight:700;
+      font-size:16px; transition: transform 0.3s, box-shadow 0.3s;
     }
-    .btn i{ font-size:18px; line-height:1; }
+    html[dir="rtl"] .btn{ flex-direction: row-reverse; }
+    .btn:hover{
+      transform:scale(1.06);
+      box-shadow:0 12px 40px rgba(124,58,237,0.45);
+    }
+    .btn i{ font-size:20px; }
 
-    /* في حالة واجهة RTL: نعيد ترتيب الـ flex ليظهر الأيقونة إلى يمين النص (الأدق للمستخدم العربي) */
-    html[dir="rtl"] .btn { flex-direction: row-reverse; }
+    .btn-home{ background:linear-gradient(90deg,var(--accent-end),var(--accent-start)); color:white; }
+    .btn-whatsapp{ background-color:var(--whatsapp); color:white; }
+    .btn-instagram{ background:linear-gradient(135deg,#f58529,#dd2a7b,#515bd4); color:white; }
+    .btn-telegram{ background-color:var(--telegram); color:white; }
+    .btn-paypal{ background-color:var(--paypal); color:white; }
 
-    .btn:hover{ transform:scale(1.03); }
+    .muted{color:var(--muted); font-size:14px; margin-top:18px; line-height:1.5; word-break:break-word;}
+    footer{ margin-top:22px; font-size:13px; color:var(--muted); opacity:0.9; }
 
-    .btn-home{ background:linear-gradient(90deg,var(--accent-end),var(--accent-start)); color:white; box-shadow:0 6px 20px rgba(124,58,237,0.32); }
-    .btn-whatsapp{ background-color:var(--whatsapp); color:white; box-shadow:0 6px 20px rgba(37,211,102,0.28); }
-    .btn-instagram{ background:linear-gradient(135deg,#f58529,#dd2a7b,#515bd4); color:white; box-shadow:0 6px 20px rgba(221,42,123,0.28); }
-    .btn-telegram{ background-color:var(--telegram); color:white; box-shadow:0 6px 20px rgba(0,136,204,0.28); }
-    .btn-paypal{ background-color:var(--paypal); color:white; box-shadow:0 6px 20px rgba(0,112,186,0.36); }
-
-    .muted{ color:var(--muted); font-size:14px; margin-top:16px; line-height:1.45; word-break:break-word; }
-    footer{ margin-top:18px; font-size:13px; color:var(--muted); opacity:0.9; }
-
-    /* استجابة المحمول */
-    @media (max-width:480px){
-      body::before{ display:none; } /* إيقاف الخلفية الثقيلة */
-      .card{ padding:18px; border-radius:14px; }
-      h2{ font-size:22px; margin-bottom:14px; }
-      .btn{ padding:12px 14px; font-size:15px; max-width:100%; }
-      .container{ margin-top:12px; margin-bottom:12px; }
+    @media(max-width:480px){
+      .card{padding:20px; border-radius:18px;}
+      h2{font-size:24px;}
+      .btn{padding:12px 16px; font-size:15px; max-width:100%;}
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card" role="region" aria-label="Contact card">
-      <!-- زر الصفحة الرئيسية -->
-      <a href="index.html" class="btn btn-home" rel="noopener noreferrer"><i class="fa-solid fa-house"></i> Home</a>
+<div class="floating">
+  <span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
 
-      <h2>Contact Me</h2>
+<div class="container">
+  <div class="card">
+    <a href="index.html" class="btn btn-home"><i class="fa-solid fa-house"></i> Home</a>
+    <h2>Contact Me</h2>
 
-      <!-- أزرار التواصل (أضفت rel="noopener noreferrer" لأمان الروابط في علامات target="_blank") -->
-      <a href="https://wa.me/962781013619" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://wa.me/962781013619" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.instagram.com/gj_.46_?igsh=M3d0Nms1MGg2bWV1" target="_blank" rel="noopener noreferrer" class="btn btn-instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a href="https://t.me/HX6446" target="_blank" rel="noopener noreferrer" class="btn btn-telegram"><i class="fa-brands fa-telegram"></i> Telegram</a>
+    <a href="https://www.paypal.me/HIJAZIWAZWAZ" target="_blank" rel="noopener noreferrer" class="btn btn-paypal"><i class="fa-brands fa-paypal"></i> Support via PayPal</a>
 
-      <a href="https://www.instagram.com/gj_.46_?igsh=M3d0Nms1MGg2bWV1" target="_blank" rel="noopener noreferrer" class="btn btn-instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <p class="muted">
+      Or reach me via Email:<br><b>hijaziwazwaz@gmail.com</b>
+    </p>
 
-      <a href="https://t.me/HX6446" target="_blank" rel="noopener noreferrer" class="btn btn-telegram"><i class="fa-brands fa-telegram"></i> Telegram</a>
-
-      <a href="https://www.paypal.me/HIJAZIWAZWAZ" target="_blank" rel="noopener noreferrer" class="btn btn-paypal"><i class="fa-brands fa-paypal"></i> Support via PayPal</a>
-
-      <p class="muted">
-        Or reach me via Email:<br>
-        <b>hijaziwazwaz@gmail.com</b>
-      </p>
-
-      <footer>© 2025 All Rights Reserved</footer>
-    </div>
+    <footer>© 2025 All Rights Reserved</footer>
   </div>
+</div>
 </body>
 </html>
