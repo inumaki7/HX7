@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> Home </title>
+  <title>Home - 𝑯𝕏⁷</title>
   <meta name="description" content="موقع شخصي لعرض خدمات: دعم فني، برمجة مواقع وتطبيقات، صيانة، وتطوير ألعاب." />
-
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="icon" href="ايقونة.png" type="image/png">
 
@@ -19,236 +18,208 @@
       --glass: rgba(255,255,255,0.04);
       --glass-2: rgba(255,255,255,0.02);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
+    html,body{height:100%;overflow-x:hidden;}
     body{
+      margin:0;
       font-family:'Tajawal',sans-serif;
       background:linear-gradient(180deg,var(--bg),#071024 120%);
       color:#e6eef6;
       line-height:1.5;
       padding:24px;
+      position:relative;
+      overflow:hidden;
     }
 
-    .container{max-width:1100px;margin:0 auto}
+    /* تموجات بنفسجية */
+    body::before, body::after {
+      content:"";
+      position:absolute;
+      top:0; left:0;
+      width:200%; height:200%;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(124,58,237,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(124,58,237,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(167,85,255,0.1) 0%, transparent 50%);
+      animation: wave 60s infinite linear;
+      z-index:0;
+      opacity:0.6;
+      transform:translateZ(0);
+    }
+    body::after { animation: wave2 90s infinite linear; opacity:0.4; }
 
-    /* ===== Header ===== */
-    header{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:16px;margin-bottom:28px;flex-wrap:wrap;
+    @keyframes wave {
+      0%{transform:translate(0,0) rotate(0deg);}
+      50%{transform:translate(-5%, -2%) rotate(180deg);}
+      100%{transform:translate(0,0) rotate(360deg);}
     }
-    .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-    .logo{
-      width:56px;height:56px;border-radius:12px;
-      background:linear-gradient(135deg,var(--accent-start),var(--accent-end));
-      display:flex;align-items:center;justify-content:center;
-      font-weight:900;color:white;font-size:18px;
-      box-shadow:0 6px 20px rgba(7,10,23,0.6)
-    }
-    .brand h1{margin:0;font-size:20px}
-    .muted{color:var(--muted);font-size:14px}
-    nav a{
-      color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500;
-      transition:.2s;
-    }
-    nav a:hover{color:white}
-
-    /* ===== Hero ===== */
-    .hero{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      align-items:center;
-      margin-bottom:36px;
-    }
-    .hero .card{
-      background:linear-gradient(180deg,var(--glass),var(--glass-2));
-      padding:28px;border-radius:14px;
-      box-shadow:0 6px 30px rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-    }
-    .title{font-size:26px;margin-bottom:10px;line-height:1.4}
-    .subtitle{color:var(--muted);margin-bottom:18px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      padding:10px 16px;border-radius:10px;border:0;cursor:pointer;
-      font-weight:700;text-decoration:none;display:inline-block;text-align:center;
-    }
-    .btn-primary{
-      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:white;box-shadow:0 8px 24px rgba(124,58,237,0.16);
+    @keyframes wave2 {
+      0%{transform:translate(0,0) rotate(0deg);}
+      50%{transform:translate(5%, 3%) rotate(-180deg);}
+      100%{transform:translate(0,0) rotate(-360deg);}
     }
 
-    /* ===== Services ===== */
-    .services{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:16px;margin-top:18px;
+    /* أشكال صغيرة متحركة */
+    .floating-shapes span {
+      position: absolute;
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg,var(--accent-start),var(--accent-end));
+      opacity: 0.35;
+      border-radius: 4px;
+      animation: floatShape 20s infinite ease-in-out;
+      z-index: 0;
     }
-    .service-card{
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-      transition:transform .25s,box-shadow .25s;
+    .floating-shapes span:nth-child(odd){border-radius:50%;}
+    .floating-shapes span:nth-child(1){top:10%;left:5%;animation-duration:18s;}
+    .floating-shapes span:nth-child(2){top:80%;left:10%;animation-duration:25s;width:16px;height:16px;}
+    .floating-shapes span:nth-child(3){top:60%;left:85%;animation-duration:22s;}
+    .floating-shapes span:nth-child(4){top:40%;left:70%;animation-duration:28s;}
+    .floating-shapes span:nth-child(5){top:20%;left:90%;animation-duration:30s;width:10px;height:10px;}
+    .floating-shapes span:nth-child(6){top:75%;left:50%;animation-duration:26s;}
+
+    @keyframes floatShape {
+      0%{transform:translateY(0) rotate(0deg);opacity:.4;}
+      50%{transform:translateY(-40px) rotate(180deg);opacity:.7;}
+      100%{transform:translateY(0) rotate(360deg);opacity:.4;}
     }
-    .service-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 20px 50px rgba(2,6,23,0.6);
-    }
-    .service-icon{
-      width:50px;height:50px;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:22px;color:white;
-      background:linear-gradient(135deg,var(--accent-end),var(--accent-start));
-      margin-left:auto;
-    }
-    .service-title{font-weight:800;margin:8px 0 4px}
+
+    .container{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+
+    /* تأثير دخول العناصر من الأسفل */
+    [data-animate]{opacity:0; transform:translateY(30px); animation:fadeUpFull 0.8s forwards ease-out;}
+    @keyframes fadeUpFull { to { opacity:1; transform:translateY(0); } }
+    [data-animate="header"]{animation-delay:0.2s;}
+    [data-animate="hero"]{animation-delay:0.4s;}
+    [data-animate="services"]{animation-delay:0.6s;}
+    [data-animate="portfolio"]{animation-delay:0.8s;}
+    [data-animate="footer"]{animation-delay:1s;}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:18px;background:linear-gradient(135deg,var(--accent-start),var(--accent-end));border-radius:12px;width:56px;height:56px;box-shadow:0 6px 20px rgba(7,10,23,0.6);}
+    .logo::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background: linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.0));transform: skewX(-25deg);transition: all 0.5s ease;}
+    .logo:hover::before{left:100%;}
+    .brand-text{opacity:0;transform:translateY(-10px);animation:fadeSlide 1s forwards 0.3s;}
+    @keyframes fadeSlide{to{opacity:1;transform:translateY(0);}}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;position:relative;transition:color 0.3s, transform 0.3s;font-weight:600;}
+    nav a::after{content:"";position:absolute;bottom:-4px;right:0;width:0%;height:2px;background: linear-gradient(90deg,var(--accent-start),var(--accent-end));transition:width 0.4s ease;border-radius:3px;}
+    nav a:hover{color:white;transform:translateY(-3px) scale(1.05);}
+    nav a:hover::after{width:100%;left:0;right:auto;}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin-bottom:36px}
+    .hero .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:28px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px);}
+    .title{font-size:28px;margin:0 0 10px}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .cta-row{display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block;text-align:center}
+    .btn-primary{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:white;box-shadow:0 8px 24px rgba(124,58,237,0.16)}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .service-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
+    .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
+    .service-card::before{content:"";position:absolute;inset:0;background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.18));transform: scaleX(0);transform-origin: right;transition: transform 0.5s ease;z-index: 0;border-radius: 12px;}
+    .service-card:hover::before{transform: scaleX(1);transform-origin:left;}
+    .service-card > div{position: relative; z-index: 1;}
+    .service-icon{width:54px;height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:white;background:linear-gradient(135deg,var(--accent-end),var(--accent-start));margin-left:auto}
+    .service-title{font-weight:800;margin:8px 0}
     .service-desc{color:var(--muted);font-size:14px}
 
-    /* ===== Works ===== */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:12px;
-    }
-    .work{
-      border-radius:10px;padding:14px;
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .work h4{margin-bottom:6px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .work{border-radius:10px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);opacity:0;transform:translateY(20px);animation:fadeUp 0.8s forwards;animation-delay:calc(var(--i)*0.2s+1s);transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease;}
+    .work:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 50px rgba(124,58,237,0.2);border-color: rgba(124,58,237,0.3);}
+    .work h4{margin:0 0 6px}
     .work p{margin:0;color:var(--muted);font-size:14px}
+    .work::before{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent);transform:skewX(-20deg);transition:0.5s;}
+    .work:hover::before{left:125%;transition:0.8s;}
 
-    footer{
-      margin-top:40px;color:var(--muted);font-size:13px;text-align:center;
-    }
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 
-    .badge{
-      display:inline-block;padding:6px 10px;border-radius:999px;
-      font-weight:700;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#fff;font-size:13px;margin-bottom:10px;
-    }
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
 
-    /* ===== Mobile tweaks ===== */
-    @media (max-width:560px){
-      body{padding:16px;}
-      .logo{width:46px;height:46px;font-size:16px;}
-      .brand h1{font-size:18px}
-      .title{font-size:22px}
-      .subtitle{font-size:14px}
-      .btn{width:100%;text-align:center}
-      header{flex-direction:column;align-items:flex-start}
-      nav{width:100%;display:flex;justify-content:space-around;margin-top:10px}
-      nav a{margin:0;font-size:15px}
-    }
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+    @media(max-width:560px){nav{display:none}.services{grid-template-columns:1fr}}
+    .badge{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:700;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#fff;font-size:13px}
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">𝑯𝕏⁷</div>
-        <div>
-          <h1>𝑯𝕏⁷</h1>
-          <div class="muted">خبير دعم فني • مبرمج مواقع وتطبيقات • مطور ألعاب</div>
-        </div>
-      </div>
-      <nav>
-        <a href="index2.html">الخدمات</a>
-        <a href="index3.html">أعمالي</a>
-        <a href="index4.html">التواصل</a>
-      </nav>
-    </header>
+<div class="floating-shapes"><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
-    <section class="hero">
-      <div class="card">
-        <div class="badge">جاهز للعمل</div>
-        <h2 class="title">أقدم حلول تقنية متكاملة — من الدعم والصيانة إلى تطوير المواقع والتطبيقات والألعاب</h2>
-        <p class="subtitle">خبرة في حل المشكلات بسرعة، تطوير واجهات مستخدم عصرية، وتطبيقات موبايل قابلة للتوسع.</p>
-        <div class="cta-row">
-          <button class="btn btn-primary" onclick="scrollToSection('portfolio')">اطلع على أعمالي</button>
-        </div>
-
-        <div style="margin-top:20px;">
-          <h3 style="margin:0 0 8px">خدمات رئيسية</h3>
-          <div class="services">
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">🛠️</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">خبير دعم فني</div>
-                  <div class="service-desc">دعم لحظي، إعداد شبكات، مراقبة، واستجابة للحوادث.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">💻</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">مبرمج مواقع</div>
-                  <div class="service-desc">واجهات سريعة، متوافقة مع الجوال، وSEO أساسي.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">🔧</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">خبير صيانة</div>
-                  <div class="service-desc">صيانة أجهزة وبرمجيات، فحص دوري، واسترجاع بيانات.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">📱</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">مبرمج تطبيقات</div>
-                  <div class="service-desc">تطبيقات أندرويد وiOS قابلة للتطوير وربط مع API.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">🎮</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">مبرمج ألعاب</div>
-                  <div class="service-desc">ألعاب ثنائية وثلاثية الأبعاد، محرك Unity، تحسين الأداء.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div style="display:flex;align-items:center">
-                <div class="service-icon">⚡</div>
-                <div style="margin-right:12px">
-                  <div class="service-title">تحسين أداء</div>
-                  <div class="service-desc">تسريع مواقع وتطبيقات، وتحسين استهلاك الموارد.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <h3>نماذج أعمال</h3>
-      <div class="grid" style="margin-top:12px">
-        <div class="work"><h4>موقع معرض أعمال (قالب)</h4><p>تصميم واجهة + لوحة تحكم بسيطة، نظام اتصالات عبر API.</p></div>
-        <div class="work"><h4>تطبيق موبايل لخدمة عملاء</h4><p>Android & iOS، إشعارات، تكامل مع CRM.</p></div>
-        <div class="work"><h4>لعبة ثنائية الأبعاد</h4><p>Unity، نظام تقدم، وتحسين للأداء على الأجهزة الضعيفة.</p></div>
-        <div class="work"><h4>مشروع صيانة شبكات</h4><p>تركيب ومتابعة أجهزة، خطة صيانة دورية ومستندات توثيق.</p></div>
-      </div>
-    </section>
-
-    <footer>© 2025 𝑯𝕏⁷ — جميع الحقوق محفوظة</footer>
+<div class="container">
+<header data-animate="header">
+  <div class="brand">
+    <div class="logo">𝑯𝕏⁷</div>
+    <div class="brand-text">
+      <h1>𝑯𝕏⁷</h1>
+      <div class="muted">خبير دعم فني • مبرمج مواقع وتطبيقات • مطور ألعاب</div>
+    </div>
   </div>
+  <nav>
+    <a href="index2.html">الخدمات</a>
+    <a href="index3.html">أعمالي</a>
+    <a href="index4.html">التواصل</a>
+  </nav>
+</header>
 
-  <script>
-    function scrollToSection(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
-  </script>
+<section class="hero" data-animate="hero">
+  <div class="card">
+    <div class="badge">جاهز للعمل</div>
+    <h2 class="title">أقدم حلول تقنية متكاملة — من الدعم والصيانة إلى تطوير المواقع والتطبيقات والألعاب</h2>
+    <p class="subtitle">خبرة في حل المشكلات بسرعة، تطوير واجهات مستخدم عصرية، وتطبيقات موبايل قابلة للتوسع.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="scrollToSection('portfolio')">اطلع على أعمالي</button>
+    </div>
+    <div style="margin-top:18px;" data-animate="services">
+      <h3 style="margin:0 0 8px">خدمات رئيسية</h3>
+      <div class="services">
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">🛠️</div>
+          <div style="margin-right:12px"><div class="service-title">خبير دعم فني</div><div class="service-desc">دعم لحظي، إعداد شبكات، مراقبة، واستجابة للحوادث.</div></div>
+        </div></div>
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">💻</div>
+          <div style="margin-right:12px"><div class="service-title">مبرمج مواقع</div><div class="service-desc">واجهات سريعة، متوافقة مع الجوال، وSEO أساسي.</div></div>
+        </div></div>
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">🔧</div>
+          <div style="margin-right:12px"><div class="service-title">خبير صيانة</div><div class="service-desc">صيانة أجهزة وبرمجيات، فحص دوري، واسترجاع بيانات.</div></div>
+        </div></div>
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">📱</div>
+          <div style="margin-right:12px"><div class="service-title">مبرمج تطبيقات</div><div class="service-desc">تطبيقات أندرويد وiOS قابلة للتطوير وربط مع API.</div></div>
+        </div></div>
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">🎮</div>
+          <div style="margin-right:12px"><div class="service-title">مبرمج ألعاب</div><div class="service-desc">ألعاب ثنائية وثلاثية الأبعاد، محرك Unity، تحسين الأداء.</div></div>
+        </div></div>
+        <div class="service-card"><div style="display:flex;align-items:center">
+          <div class="service-icon">⚡</div>
+          <div style="margin-right:12px"><div class="service-title">تحسين أداء</div><div class="service-desc">تسريع مواقع وتطبيقات، وتحسين استهلاك الموارد.</div></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" data-animate="portfolio">
+  <h3>نماذج أعمال</h3>
+  <div class="grid" style="margin-top:12px">
+    <div class="work"><h4>موقع معرض أعمال (قالب)</h4><p>تصميم واجهة + لوحة تحكم بسيطة، نظام اتصالات عبر API.</p></div>
+    <div class="work"><h4>تطبيق موبايل لخدمة عملاء</h4><p>Android & iOS، إشعارات، تكامل مع CRM.</p></div>
+    <div class="work"><h4>لعبة ثنائية الأبعاد</h4><p>Unity، نظام تقدم، وتحسين للأداء على الأجهزة الضعيفة.</p></div>
+    <div class="work"><h4>مشروع صيانة شبكات</h4><p>تركيب ومتابعة أجهزة، خطة صيانة دورية ومستندات توثيق.</p></div>
+  </div>
+</section>
+
+<footer data-animate="footer">© 2025 𝑯𝕏⁷ — جميع الحقوق محفوظة</footer>
+</div>
+
+<script>
+document.querySelectorAll('#portfolio .work').forEach((el, i)=>el.style.setProperty('--i',i));
+function scrollToSection(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+</script>
 </body>
 </html>
